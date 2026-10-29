@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{1079d2e6-9245-42bd-b65a-483e34ef4294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameSetting">
+      <UniqueIdentifier>{185ad6e3-3c34-4ca5-976f-43429606e946}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\FPS">
+      <UniqueIdentifier>{c077e068-fc8a-45e5-8134-41407d3f4ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\BackCround">
+      <UniqueIdentifier>{0b3ca7c4-cb80-4f81-bfb3-9999e58f8f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Map">
+      <UniqueIdentifier>{fe8fd1af-3394-4ad8-a7d3-acd43500dcfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Player">
+      <UniqueIdentifier>{b74ec5fa-25da-4df6-99fe-46d040fa8813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Collision">
+      <UniqueIdentifier>{4c4e947a-89b2-4be0-8cf1-bf115e2773ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{34de7f18-c9ca-41a4-8ba8-275ae9193e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Enemy">
+      <UniqueIdentifier>{c5fb077a-ba67-4d25-93fb-3877fd63a65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Gravity">
+      <UniqueIdentifier>{7146eb34-f9a0-4a16-ada7-ca9314fd458f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Animetion">
+      <UniqueIdentifier>{4b9539b2-fce6-4a3d-a2b3-05d321872dae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FPS\FPS.cpp">
+      <Filter>Source\FPS</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BackGround\BackGround.cpp">
+      <Filter>Source\BackCround</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Map\MapChip.cpp">
+      <Filter>Source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Map\MapManager.cpp">
+      <Filter>Source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Map\Block.cpp">
+      <Filter>Source\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Player\Player.cpp">
+      <Filter>Source\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision\Collison.cpp">
+      <Filter>Source\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\Input.cpp">
+      <Filter>Source\Input</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\GameSetting\GameSetting.h">
+      <Filter>Source\GameSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FPS\FPS.h">
+      <Filter>Source\FPS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BackGround\BackGround.h">
+      <Filter>Source\BackCround</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map\MapChip.h">
+      <Filter>Source\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map\MapManager.h">
+      <Filter>Source\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map\MapParameter.h">
+      <Filter>Source\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map\Block.h">
+      <Filter>Source\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Player\Player.h">
+      <Filter>Source\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\Collision.h">
+      <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Input.h">
+      <Filter>Source\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\CollisionParameter.h">
+      <Filter>Source\Collision</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
