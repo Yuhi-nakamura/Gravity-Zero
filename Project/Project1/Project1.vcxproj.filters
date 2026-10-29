@@ -34,6 +34,9 @@
     <Filter Include="Source\Animetion">
       <UniqueIdentifier>{4b9539b2-fce6-4a3d-a2b3-05d321872dae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Sound">
+      <UniqueIdentifier>{49accebf-012a-4ba7-b162-82822c69c7b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Source\Input\Input.cpp">
       <Filter>Source\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Sound\Sound.cpp">
+      <Filter>Source\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\CollisionParameter.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Sound\Sound.h">
+      <Filter>Source\Sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
