@@ -22,6 +22,7 @@
     <ClCompile Include="Source\BackGround\BackGround.cpp" />
     <ClCompile Include="Source\Collision\Collison.cpp" />
     <ClCompile Include="Source\FPS\FPS.cpp" />
+    <ClCompile Include="Source\Gravity\Gravity.cpp" />
     <ClCompile Include="Source\Input\Input.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Map\Block.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="Source\Collision\CollisionParameter.h" />
     <ClInclude Include="Source\FPS\FPS.h" />
     <ClInclude Include="Source\GameSetting\GameSetting.h" />
+    <ClInclude Include="Source\Gravity\Gravity.h" />
     <ClInclude Include="Source\Input\Input.h" />
     <ClInclude Include="Source\Map\Block.h" />
     <ClInclude Include="Source\Map\MapChip.h" />
