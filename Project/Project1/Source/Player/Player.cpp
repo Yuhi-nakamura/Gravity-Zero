@@ -4,6 +4,7 @@
 #include "../Map/MapManager.h"
 #include "../Map/MapChip.h"
 #include "../Input/Input.h"
+#include "../Camera/Camera.h"
 
 //プレイヤーデータ(のち変更)
 #define PLAYER_SPEED (7)
@@ -108,9 +109,12 @@ void DrawPlayer()
 {
 	if (!g_PlayerData.active)return;
 
-	int x = (int)(g_PlayerData.body.pos.x + 0.5f);
-	int y = (int)(g_PlayerData.body.pos.y + 0.5f);
-	DrawGraph(x, y, g_PlayerData.handle, TRUE);
+	//カメラ取得
+	CameraData camera = GetCamera();
+
+	//int x = (int)(g_PlayerData.body.pos.x + 0.5f);
+	//int y = (int)(g_PlayerData.body.pos.y + 0.5f);
+	DrawGraph(g_PlayerData.body.pos.x - camera.posX,g_PlayerData.body.pos.y - camera.posY,g_PlayerData.handle, TRUE);
 }
 
 void  FinPlayer()
