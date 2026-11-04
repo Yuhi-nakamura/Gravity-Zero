@@ -37,6 +37,12 @@
     <Filter Include="Source\Sound">
       <UniqueIdentifier>{49accebf-012a-4ba7-b162-82822c69c7b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{7a043e3a-e106-43bb-941e-c7d99c7d1c92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scene">
+      <UniqueIdentifier>{5caa8f7e-cc0a-49b0-921c-91d7f7ce5623}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -71,6 +77,12 @@
     </ClCompile>
     <ClCompile Include="Source\Gravity\Gravity.cpp">
       <Filter>Source\Gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera\Camera.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\SceneManager.cpp">
+      <Filter>Source\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +124,12 @@
     </ClInclude>
     <ClInclude Include="Source\Gravity\Gravity.h">
       <Filter>Source\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera\Camera.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\SceneManager.h">
+      <Filter>Source\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
