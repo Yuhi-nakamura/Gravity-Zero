@@ -35,6 +35,7 @@ void InitPlayer()
 	g_PlayerData.body.width = 0.0f;
 	g_PlayerData.body.height = 0.0f;
 	g_PlayerData.Inversion = false;
+	g_PlayerData.Ground = false;
 }
 
 void LoadPlayer()
@@ -57,6 +58,9 @@ void StartPlayer()
 	//サイズ
 	g_PlayerData.body.width = PLAYER_WIDTH;
 	g_PlayerData.body.height = PLAYER_HEIGHT;
+
+	//接地
+	g_PlayerData.Ground = true;
 }
 
 void StepPlayer()
@@ -87,6 +91,7 @@ void StepPlayer()
 	if (IsInputKey(KEY_SPACE))
 	{
 		g_PlayerData.Inversion = false;
+		g_PlayerData.Ground = false;
 	}
 }
 

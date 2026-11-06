@@ -16,6 +16,7 @@ struct PlayerData
 	int handle;		//画像
 	Body body;	//当たり判定
 	bool Inversion; //反転
+	bool Ground; //地面に接地しているか
 };
 
 //関数のプロトタイプ宣言

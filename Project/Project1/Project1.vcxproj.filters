@@ -43,6 +43,18 @@
     <Filter Include="Source\Scene">
       <UniqueIdentifier>{5caa8f7e-cc0a-49b0-921c-91d7f7ce5623}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scene\Play">
+      <UniqueIdentifier>{cc6fc66b-7355-4f30-b8d1-714f7f9277e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scene\Title">
+      <UniqueIdentifier>{e37be239-0255-45f4-a131-6a0b610cfcd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scene\GameClear">
+      <UniqueIdentifier>{79d3806f-1d17-476c-88ef-f7c024ea3761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Pad">
+      <UniqueIdentifier>{87e54f9b-ea6e-4f16-b728-0d6dc28c15d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -83,6 +95,18 @@
     </ClCompile>
     <ClCompile Include="Source\Scene\SceneManager.cpp">
       <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\Title\Title.cpp">
+      <Filter>Source\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\Play\Play.cpp">
+      <Filter>Source\Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\GameClear\GameClear.cpp">
+      <Filter>Source\Scene\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pad\Pad.cpp">
+      <Filter>Source\Pad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +154,18 @@
     </ClInclude>
     <ClInclude Include="Source\Scene\SceneManager.h">
       <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\Title\Title.h">
+      <Filter>Source\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\Play\Play.h">
+      <Filter>Source\Scene\Play</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\GameClear\GameClear.h">
+      <Filter>Source\Scene\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Pad\Pad.h">
+      <Filter>Source\Pad</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

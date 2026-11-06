@@ -60,7 +60,7 @@ void SceneManagerUpdate()
 	}
 }
 
-void InitScecne()
+void InitScene()
 {
 	//ŠJ‚¢‚Ä‚¢‚éƒV[ƒ“‚Ì‰Šú‰»
 	switch (g_NowScene)

@@ -3,6 +3,7 @@
 #include "FPS/FPS.h"
 #include "Map/MapChip.h"
 #include "Map/Block.h"
+#include "Pad/Pad.h"
 
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
@@ -41,6 +42,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 
 		//画面クリア
 		ClearDrawScreen();
+
+		//パッド更新
+		Pad::Update();
 
 		//マップ描画
 		DrawBlock();

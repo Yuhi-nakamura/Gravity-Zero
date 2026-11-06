@@ -33,4 +33,4 @@ void DrawScene();
 void FinScene();
 
 //Ø‚è‘Ö‚¦
-void ChangeScene();
+void ChangeScene(Scene scene);

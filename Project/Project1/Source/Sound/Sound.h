@@ -10,8 +10,8 @@ enum BGM
 };
 
 void LoadBGM();
-void PlayBGN(BGM type);
-void StopBGN(BGM type);
+void PlayBGM(BGM type);
+void StopBGM(BGM type);
 void FinBGM();
 
 //SE
