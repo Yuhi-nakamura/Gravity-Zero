@@ -5,6 +5,8 @@
 #include "../Map/MapChip.h"
 #include "../Input/Input.h"
 #include "../Camera/Camera.h"
+#include "../Gravity/Gravity.h"
+#include "../Pad/Pad.h"
 
 //プレイヤーデータ(のち変更)
 #define PLAYER_SPEED (7)
@@ -13,9 +15,6 @@
 #define PLAYER_RADIUS (36.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (600.0f)
-
-//重力
-#define PLAYER_GRAVITY (0.4f)
 
 //矩形判定のサイズ
 #define PLAYER_BOX_COLLISION_WIDTH (50)
@@ -35,7 +34,7 @@ void InitPlayer()
 	g_PlayerData.body.width = 0.0f;
 	g_PlayerData.body.height = 0.0f;
 	g_PlayerData.Inversion = false;
-	g_PlayerData.Ground = false;
+	g_PlayerData.body.Ground = false;
 }
 
 void LoadPlayer()
@@ -60,7 +59,9 @@ void StartPlayer()
 	g_PlayerData.body.height = PLAYER_HEIGHT;
 
 	//接地
-	g_PlayerData.Ground = true;
+	g_PlayerData.body.Ground = true;
+
+	g_PlayerData.body.move.y = 0.0f;
 }
 
 void StepPlayer()
@@ -74,25 +75,26 @@ void StepPlayer()
 	//移動量リセット
 	g_PlayerData.body.move.x = 0.0f;
 
-	//Y方向移動量に重力
-	g_PlayerData.body.move.y += PLAYER_GRAVITY;
-
 	//左入力
-	if (IsInputKey(KEY_Q) || IsInputKey(KEY_A) || IsInputKey(KEY_Z))
+	if (IsInputKey(KEY_Q) || IsInputKey(KEY_A) || IsInputKey(KEY_Z) || Pad::IsPress(PAD_INPUT_LEFT))
 	{
 		g_PlayerData.body.move.x = -PLAYER_SPEED;
 	}
 	//右入力
-	if (IsInputKey(KEY_E) || IsInputKey(KEY_D) || IsInputKey(KEY_C))
+	if (IsInputKey(KEY_E) || IsInputKey(KEY_D) || IsInputKey(KEY_C) || Pad::IsPress(PAD_INPUT_RIGHT))
 	{
 		g_PlayerData.body.move.x += PLAYER_SPEED;
 	}
 	//重力反転
-	if (IsInputKey(KEY_SPACE))
+	if (IsTriggerKey(KEY_SPACE))
 	{
-		g_PlayerData.Inversion = false;
-		g_PlayerData.Ground = false;
+		if (g_PlayerData.body.Ground == true)
+		{
+			ReverseGravity();
+		}
 	}
+	//毎フレーム重力適応
+	StepGravity();
 }
 
 void UpdatePlayer()
@@ -102,12 +104,6 @@ void UpdatePlayer()
 
 	//当たり判定付き移動処理
 	MoveWithMapCollisin(&g_PlayerData.body);
-
-	//空中
-	if (g_PlayerData.body.move.y < 0.0f || g_PlayerData.body.move.y > PLAYER_GRAVITY)
-	{
-		g_PlayerData.body.isAir = true;
-	}
 }
 
 void DrawPlayer()

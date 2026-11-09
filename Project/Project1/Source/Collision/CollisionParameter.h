@@ -3,9 +3,9 @@
 
 struct Body
 {
-	bool isAir;
 	VECTOR pos;
 	VECTOR move;
 	float width;
 	float height;
+	bool Ground;
 };
