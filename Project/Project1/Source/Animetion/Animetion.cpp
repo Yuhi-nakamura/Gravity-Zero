@@ -85,6 +85,13 @@ void DrawAnimation(AnimationData* animData, bool isTurnX, bool isTurnY)
 
 void DrawAnimation(AnimationData* animData, float posX, float posY, bool isTurnX, bool isTurnY)
 {
+	if (!animData->active)return;
+
+	//コマの切り取り位置計算
+	int frameX = animData->frameWidth * animData->nowFrame;
+
+	//表示するコマ
+	DrawRectGraph((int)posX, (int)posY, frameX, 0, animData->frameWidth, animData->frameHeight, animData->handle, TRUE, isTurnX, isTurnY);
 }
 
 

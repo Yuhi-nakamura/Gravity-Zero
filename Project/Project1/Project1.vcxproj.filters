@@ -55,6 +55,9 @@
     <Filter Include="Source\Pad">
       <UniqueIdentifier>{87e54f9b-ea6e-4f16-b728-0d6dc28c15d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\UI">
+      <UniqueIdentifier>{5a06d0eb-e934-4eb7-a30b-24cefc093305}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -107,6 +110,21 @@
     </ClCompile>
     <ClCompile Include="Source\Pad\Pad.cpp">
       <Filter>Source\Pad</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\EnemyManager.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy\Enemy1.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Animetion\Animetion.cpp">
+      <Filter>Source\Animetion</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\Image.cpp">
+      <Filter>Source\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UI\Text.cpp">
+      <Filter>Source\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +184,24 @@
     </ClInclude>
     <ClInclude Include="Source\Pad\Pad.h">
       <Filter>Source\Pad</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\EnemyManager.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\Enemy1.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\EnemyParameter.h">
+      <Filter>Source\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Animetion\Animetion.h">
+      <Filter>Source\Animetion</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\Image.h">
+      <Filter>Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UI\Text.h">
+      <Filter>Source\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

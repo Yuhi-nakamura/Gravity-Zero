@@ -33,3 +33,8 @@ void FinEnemy()
 {
 	//各エネミー終了
 }
+
+void EnemySpawn()
+{
+
+}

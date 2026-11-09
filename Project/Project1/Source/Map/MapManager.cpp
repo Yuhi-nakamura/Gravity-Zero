@@ -34,7 +34,7 @@ void FinMap()
 void MoveWithMapCollisin(Body* body)
 {
 	//X軸
-	body->pos.x += body->pos.x;
+	body->pos.x += body->move.x;
 
 	for (int y = 0; y < MAP_CHIP_Y_NUM; y++)
 	{
@@ -74,6 +74,8 @@ void MoveWithMapCollisin(Body* body)
 	//Y軸
 	body->pos.y += body->move.y;
 
+	body->Ground = false;
+
 	// マップチップと当たり判定、押し出し
 	for (int y = 0; y < MAP_CHIP_Y_NUM; y++)
 	{
@@ -97,7 +99,7 @@ void MoveWithMapCollisin(Body* body)
 					body->pos.y -= (body->pos.y + body->height) - block->pos.y;
 
 					// 空中フラグを折る
-					body->isAir = false;
+					body->Ground = true;
 				}
 				// 下
 				else if (body->move.y < 0.0f)
@@ -105,6 +107,7 @@ void MoveWithMapCollisin(Body* body)
 					//押し出す
 					body->pos.y += (block->pos.y + block->height) - body->pos.y;
 
+					body->Ground = true;
 				}
 
 				// 移動量を0にする

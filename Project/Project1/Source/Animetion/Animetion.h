@@ -1,6 +1,6 @@
 #pragma once
 
-struct AnimetionData
+struct AnimationData
 {
 	bool active;
 	bool Loop;
