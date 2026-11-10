@@ -54,11 +54,21 @@ void StepEnemy1()
 
 }
 
-void UpdateEnemy()
+void UpdateEnemy1()
 {
 	if (!g_EnemyData.active)
 	{
 		return;
 	}
 	
+}
+
+void DrawEnemy1()
+{
+
+}
+
+void FinEnemy1()
+{
+
 }

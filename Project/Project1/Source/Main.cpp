@@ -4,6 +4,11 @@
 #include "Map/MapChip.h"
 #include "Map/Block.h"
 #include "Pad/Pad.h"
+#include "Input/Input.h"
+#include "Scene/SceneManager.h"
+#include "UI/Image.h"
+#include "UI/Text.h"
+#include "Sound/Sound.h"
 
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd)
@@ -28,6 +33,23 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	// 描画先を裏画面にする
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	//入力システム初期化
+	InitInput();
+
+	//UI初期化、ロード
+	InitUIImage();
+	InitUIText();
+
+	LoadUIImage();
+	LoadUIText();
+
+	//サウンド
+	LoadBGM();
+	LoadSE();
+
+	//FPS
+	InitFPS();
+
 	// ブロックとマップの初期化
 	InitBlock();
 	LoadBlock();
@@ -50,10 +72,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 		DrawBlock();
 
 		//入力更新
+		UpdateInput();
 
 		//シーン管理更新
+		SceneManagerUpdate();
 
 		//入力システム描画
+		DrawInput();
 
 		//エスケープキーで終了
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break;
@@ -72,10 +97,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance, 
 	}
 
 	//入力しシステムの終了
+	FinInput();
 
 	//UI終了
+	FinUIImage();
+	FinUIText();
 
 	//サウンド終料
+	FinBGM();
+	FinSE();
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 
