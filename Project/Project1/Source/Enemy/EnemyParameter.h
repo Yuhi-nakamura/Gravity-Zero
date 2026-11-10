@@ -8,4 +8,8 @@ struct EnemyData
 	int handle; //‰æ‘œ
 	Body body; //“–‚½‚è”»’è
 	bool Inversion; //”½“]
+
+	int direction; //Œü‚«
+	bool InversionDie; //’…’nŒãŽ€–S”»’è
+	float stopTimer; //‚Ô‚Â‚©‚Á‚½Œã‚Ì’âŽ~ŽžŠÔ
 };

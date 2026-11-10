@@ -33,6 +33,9 @@ void InitEnemy1()
 	g_EnemyData.body.height = 0.0f;
 	g_EnemyData.body.Ground = false;
 	g_EnemyData.Inversion = false;
+	g_EnemyData.direction = 1;
+	g_EnemyData.InversionDie = false;
+	g_EnemyData.stopTimer = 0;
 }
 
 void LoadEnemy1()
@@ -42,25 +45,19 @@ void LoadEnemy1()
 
 void StepEnemy1()
 {
-	if (!g_EnemyData.active)
-	{
-		return;
-	}
+	if (!g_EnemyData.active)return;
+	
 
-	g_EnemyData.body.pos.x += ENEMY_MOVE_SPEED;
-
-	//ˆÚ“®—Ê‚Í–ˆ‰ñƒŠƒZƒbƒg
-	g_EnemyData.body.move.x = 0.0f;
+	g_EnemyData.body.move.x = ENEMY_MOVE_SPEED * g_EnemyData.direction;
 
 }
 
 void UpdateEnemy1()
 {
-	if (!g_EnemyData.active)
-	{
-		return;
-	}
+	if (!g_EnemyData.active)return;
 	
+	MoveWithMapCollisin(&g_EnemyData.body);
+
 }
 
 void DrawEnemy1()
