@@ -58,14 +58,20 @@ void UpdateEnemy1()
 	
 	MoveWithMapCollisin(&g_EnemyData.body);
 
+	//Enemy‚Ì‘O‚ÉáŠQ•¨‚ª‚ ‚Á‚½‚çˆø‚«•Ô‚·
+	if (g_EnemyData.body.move.x < 0.0f)
+	{
+
+	}
+
 }
 
 void DrawEnemy1()
 {
-
+	g_EnemyData.handle = LoadGraph("Data/Enemy/Enemy1.png");
 }
 
 void FinEnemy1()
 {
-
+	DeleteGraph(g_EnemyData.handle);
 }
