@@ -1,5 +1,6 @@
 #pragma once
 #include "../Collision/CollisionParameter.h"
+#include "../Animetion/Animetion.h"
 
 enum PlayerAnimetionType
 {
@@ -16,6 +17,9 @@ struct PlayerData
 	int handle;		//画像
 	Body body;	//当たり判定
 	bool Inversion; //反転
+	AnimationData standby; //待機
+	AnimationData Dash; // ダッシュ
+	AnimationData InversionAnime; //反転中
 };
 
 //関数のプロトタイプ宣言
@@ -29,3 +33,6 @@ void FinPlayer();
 
 //取得関数
 PlayerData* GetPlayer();
+
+//アニメーション関連
+void InitPlayerAnimasion();

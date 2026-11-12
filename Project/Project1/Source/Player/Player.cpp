@@ -7,6 +7,7 @@
 #include "../Camera/Camera.h"
 #include "../Gravity/Gravity.h"
 #include "../Pad/Pad.h"
+#include "../Animetion/Animetion.h"
 
 //プレイヤーデータ(のち変更)
 #define PLAYER_SPEED (7)
@@ -35,11 +36,16 @@ void InitPlayer()
 	g_PlayerData.body.height = 0.0f;
 	g_PlayerData.Inversion = false;
 	g_PlayerData.body.Ground = false;
+	InitAnimation(&g_PlayerData.Dash);
+	InitAnimation(&g_PlayerData.InversionAnime);
+	InitAnimation(&g_PlayerData.standby);
 }
 
 void LoadPlayer()
 {
-	g_PlayerData.handle = LoadGraph("Data/Player/Player.png");
+	g_PlayerData.standby.handle = LoadGraph("Data/Player/Player.png");
+	g_PlayerData.Dash.handle = LoadGraph("Data/Player/Player_Dash.png");
+	g_PlayerData.InversionAnime.handle = LoadGraph("Data/Player/Player_Inversion.png");
 }
 
 void StartPlayer()
@@ -115,7 +121,7 @@ void DrawPlayer()
 
 	//int x = (int)(g_PlayerData.body.pos.x + 0.5f);
 	//int y = (int)(g_PlayerData.body.pos.y + 0.5f);
-	DrawGraph(g_PlayerData.body.pos.x - camera.posX,g_PlayerData.body.pos.y - camera.posY,g_PlayerData.handle, TRUE);
+	DrawGraph(g_PlayerData.body.pos.x -camera.posX,g_PlayerData.body.pos.y -camera.posY,g_PlayerData.handle, TRUE);
 }
 
 void  FinPlayer()
@@ -126,4 +132,10 @@ void  FinPlayer()
 PlayerData* GetPlayer()
 {
 	return &g_PlayerData;
+}
+
+void InitPlayerAnimasion()
+{
+	//待機
+	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE);
 }
