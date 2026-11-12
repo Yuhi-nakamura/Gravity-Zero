@@ -76,17 +76,17 @@ void StepPlayer()
 	g_PlayerData.body.move.x = 0.0f;
 
 	//ç∂ì¸óÕ
-	if (IsInputKey(KEY_Q) || IsInputKey(KEY_A) || IsInputKey(KEY_Z) || Pad::IsPress(PAD_INPUT_LEFT))
+	if (IsInputKey(KEY_Q) || IsInputKey(KEY_A) || IsInputKey(KEY_Z) || Pad::IsPress(PAD_INPUT_LEFT) || Pad::GetStickX() < -200)
 	{
 		g_PlayerData.body.move.x = -PLAYER_SPEED;
 	}
 	//âEì¸óÕ
-	if (IsInputKey(KEY_E) || IsInputKey(KEY_D) || IsInputKey(KEY_C) || Pad::IsPress(PAD_INPUT_RIGHT))
+	if (IsInputKey(KEY_E) || IsInputKey(KEY_D) || IsInputKey(KEY_C) || Pad::IsPress(PAD_INPUT_RIGHT) || Pad::GetStickX() > 200)
 	{
 		g_PlayerData.body.move.x += PLAYER_SPEED;
 	}
 	//èdóÕîΩì]
-	if (IsTriggerKey(KEY_SPACE))
+	if (IsTriggerKey(KEY_SPACE) || Pad::IsTrigger(PAD_INPUT_A) || Pad::IsTrigger(PAD_INPUT_B) || Pad::IsTrigger(PAD_INPUT_X) || Pad::IsTrigger(PAD_INPUT_Y))
 	{
 		if (g_PlayerData.body.Ground == true)
 		{

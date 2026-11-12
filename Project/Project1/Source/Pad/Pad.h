@@ -25,4 +25,8 @@ namespace Pad
 
 	//離した瞬間
 	bool IsRelease(int Key);
+
+	//左スティック
+	int GetStickX();
+	int GetStickY();
 }

@@ -12,6 +12,10 @@ namespace Pad
 
 namespace Pad
 {
+	//左スティックX軸、Y軸
+	int stickX = 0;
+	int stickY = 0;
+
 	void Update()
 	{
 		//前のフレームのパッド情報
@@ -19,6 +23,21 @@ namespace Pad
 
 		//現在のパッド情報
 		nowPad = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+
+		//左スティックの入力情報
+		GetJoypadAnalogInput(&stickX, &stickY, DX_INPUT_PAD1);
+	}
+
+	//左スティックのX軸を取得
+	int GetStickX()
+	{
+		return stickX;
+	}
+
+	//左スティックのY軸を取得
+	int GetStickY()
+	{
+		return stickY;
 	}
 
 	bool Pad::IsPress(int Key)

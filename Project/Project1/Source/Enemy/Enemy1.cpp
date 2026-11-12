@@ -5,6 +5,7 @@
 #include "../Map/MapManager.h"
 #include "../Sound/Sound.h"
 #include "../Gravity/Gravity.h"
+#include "../Player/Player.h"
 
 //エネミー1関連設定
 #define ENEMY_WIDTH (30.0f)
@@ -36,6 +37,7 @@ void InitEnemy1()
 	g_EnemyData.direction = 1;
 	g_EnemyData.InversionDie = false;
 	g_EnemyData.stopTimer = 0;
+	g_EnemyData.movestate = MOVE;
 }
 
 void LoadEnemy1()
@@ -47,23 +49,51 @@ void StepEnemy1()
 {
 	if (!g_EnemyData.active)return;
 	
+	if (g_EnemyData.movestate == MOVE)
+	{
+		g_EnemyData.body.move.x = ENEMY_MOVE_SPEED * g_EnemyData.direction;
+	}
+	else if (g_EnemyData.movestate == STOP)
+	{
+		g_EnemyData.body.move.x = 0.0f;
+	}
+	else if (g_EnemyData.movestate == DIE)
+	{
 
-	g_EnemyData.body.move.x = ENEMY_MOVE_SPEED * g_EnemyData.direction;
-
+	}
 }
 
 void UpdateEnemy1()
 {
+	//移動前の値を保存
+	float BeforeMoving = 0.0f;
+
 	if (!g_EnemyData.active)return;
 	
+	BeforeMoving = g_EnemyData.body.move.x;
+
 	MoveWithMapCollisin(&g_EnemyData.body);
 
 	//Enemyの前に障害物があったら引き返す
-	if (g_EnemyData.body.move.x < 0.0f)
+	if (BeforeMoving != 0.0f && g_EnemyData.body.move.x == 0.0f)
 	{
-
+		g_EnemyData.movestate = STOP;
+		g_EnemyData.stopTimer = 0;
 	}
 
+	if (g_EnemyData.movestate == STOP)
+	{
+		g_EnemyData.stopTimer++;
+
+		if (g_EnemyData.stopTimer >= 60)
+		{
+			g_EnemyData.direction *= -1;
+			g_EnemyData.movestate = MOVE;
+			g_EnemyData.stopTimer = 0;
+		}
+	}
+
+	//MapChipData mapChip = GetMapChipData()
 }
 
 void DrawEnemy1()

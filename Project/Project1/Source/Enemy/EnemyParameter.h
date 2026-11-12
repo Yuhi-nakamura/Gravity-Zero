@@ -11,5 +11,14 @@ struct EnemyData
 
 	int direction; //Œü‚«
 	bool InversionDie; //’…’nŒã€–S”»’è
-	float stopTimer; //‚Ô‚Â‚©‚Á‚½Œã‚Ì’â~ŠÔ
+	int stopTimer; //‚Ô‚Â‚©‚Á‚½Œã‚Ì’â~ŠÔ
+	MoveState movestate; //s“®ó‘Ô
+};
+
+enum MoveState
+{
+	MOVE,
+	STOP,
+	DIE,
+	MOVE_MAX,
 };
