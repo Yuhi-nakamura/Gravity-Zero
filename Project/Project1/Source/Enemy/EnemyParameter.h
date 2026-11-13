@@ -1,6 +1,14 @@
 #pragma once
 #include "../Collision/CollisionParameter.h"
 
+enum MoveState
+{
+	MOVE,
+	STOP,
+	DIE,
+	MOVE_MAX,
+};
+
 //エネミーデータ
 struct EnemyData
 {
@@ -15,10 +23,3 @@ struct EnemyData
 	MoveState movestate; //行動状態
 };
 
-enum MoveState
-{
-	MOVE,
-	STOP,
-	DIE,
-	MOVE_MAX,
-};

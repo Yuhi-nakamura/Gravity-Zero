@@ -1,4 +1,7 @@
 #include "SceneManager.h"
+#include "Play/Play.h"
+#include "Title/Title.h"
+#include "GameClear/GameClear.h"
 
 
 //最初に開かれるシーンを初期値
@@ -69,7 +72,7 @@ void InitScene()
 		//InitTitle();
 		break;
 	case SCENE_PLAY: //プレイ
-	 	//InitPlay();
+	 	InitPlay();
 		break;
 	case SCENE_GAME_CLEAR: //ゲームクリア
 		//InitGameClear();
@@ -86,7 +89,7 @@ void LoadScene()
 		//LoadTitle();
 		break;
 	case SCENE_PLAY:
-		//LoadPlay();
+		LoadPlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//LoadGameClear();
@@ -102,7 +105,7 @@ void StartScene()
 		//StartTitle();
 		break;
 	case SCENE_PLAY:
-		//StartPlay();
+		StartPlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//StartGameClear();
@@ -118,7 +121,7 @@ void StepScene()
 		//StepTitle();
 		break;
 	case SCENE_PLAY:
-		//StepPlay();
+		StepPlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//StepGameClear();
@@ -134,7 +137,7 @@ void UpdateScene()
 		//UpdateTitle();
 		break;
 	case SCENE_PLAY:
-		//UpdatePlay();
+		UpdatePlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//UpdateGameClear();
@@ -150,7 +153,7 @@ void DrawScene()
 		//DrawTitle();
 		break;
 	case SCENE_PLAY:
-		//DrawPlay();
+		DrawPlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//DrawGameClear();
@@ -166,7 +169,7 @@ void FinScene()
 		//FinTitle();
 		break;
 	case SCENE_PLAY:
-		//FinPlay();
+		FinPlay();
 		break;
 	case SCENE_GAME_CLEAR:
 		//FinGameClear();

@@ -57,6 +57,9 @@ void StartPlayer()
 	g_PlayerData.body.pos.x = PLAYER_DEFAULT_POS_X;
 	g_PlayerData.body.pos.y = PLAYER_DEFAULT_POS_Y;
 	
+	//アニメーション
+	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE);
+
 	//反転
 	g_PlayerData.Inversion = false;
 
@@ -110,6 +113,9 @@ void UpdatePlayer()
 
 	//当たり判定付き移動処理
 	MoveWithMapCollisin(&g_PlayerData.body);
+
+	//アニメーション更新
+	UpdateAnimation(&g_PlayerData.standby);
 }
 
 void DrawPlayer()
@@ -121,7 +127,7 @@ void DrawPlayer()
 
 	//int x = (int)(g_PlayerData.body.pos.x + 0.5f);
 	//int y = (int)(g_PlayerData.body.pos.y + 0.5f);
-	DrawGraph(g_PlayerData.body.pos.x -camera.posX,g_PlayerData.body.pos.y -camera.posY,g_PlayerData.handle, TRUE);
+	DrawAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x - camera.posX, g_PlayerData.body.pos.y - camera.posY, FALSE, FALSE);
 }
 
 void  FinPlayer()
@@ -134,14 +140,3 @@ PlayerData* GetPlayer()
 	return &g_PlayerData;
 }
 
-void InitPlayerAnimasion()
-{
-	//待機
-	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE);
-
-	//ダッシュ
-	StartAnimation(&g_PlayerData.Dash, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 0, 0, TRUE);
-
-	//反転
-	StartAnimation(&g_PlayerData.InversionAnime, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 0, 0, TRUE);
-}
