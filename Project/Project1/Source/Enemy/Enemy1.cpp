@@ -6,6 +6,7 @@
 #include "../Sound/Sound.h"
 #include "../Gravity/Gravity.h"
 #include "../Player/Player.h"
+#include "../Animetion/Animetion.h"
 
 //エネミー1関連設定
 #define ENEMY_WIDTH (30.0f)
@@ -59,7 +60,7 @@ void StepEnemy1()
 	}
 	else if (g_EnemyData.movestate == DIE)
 	{
-
+		g_EnemyData.body.move.x = 0.0f;
 	}
 }
 
@@ -92,8 +93,18 @@ void UpdateEnemy1()
 			g_EnemyData.stopTimer = 0;
 		}
 	}
+	
+	PlayerData* player = GetPlayer();
+	if (player->Inversion == true)
+	{
+		g_EnemyData.Inversion = true;
 
-	//MapChipData mapChip = GetMapChipData()
+		//一回反転されて地面についたとき死ぬよう改善
+		if (g_EnemyData.Inversion = false)
+		{
+			g_EnemyData.InversionDie = true;
+		}
+	}
 }
 
 void DrawEnemy1()
@@ -104,4 +115,10 @@ void DrawEnemy1()
 void FinEnemy1()
 {
 	DeleteGraph(g_EnemyData.handle);
+}
+
+//歩く、落ちる、死ぬアニメーション追加
+void InitEnemy1Animation()
+{
+	//待機
 }

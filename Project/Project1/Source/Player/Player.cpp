@@ -138,4 +138,10 @@ void InitPlayerAnimasion()
 {
 	//待機
 	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE);
+
+	//ダッシュ
+	StartAnimation(&g_PlayerData.Dash, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 0, 0, TRUE);
+
+	//反転
+	StartAnimation(&g_PlayerData.InversionAnime, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 0, 0, TRUE);
 }
