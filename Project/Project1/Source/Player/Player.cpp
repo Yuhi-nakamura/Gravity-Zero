@@ -11,15 +11,15 @@
 
 //プレイヤーデータ(のち変更)
 #define PLAYER_SPEED (7)
-#define PLAYER_HEIGHT (50.0f)
-#define PLAYER_WIDTH (50.0f)
-#define PLAYER_RADIUS (36.0f)
+#define PLAYER_HEIGHT (175.0f)
+#define PLAYER_WIDTH (98.0f)
+#define PLAYER_RADIUS (50.0f)
 #define PLAYER_DEFAULT_POS_X (100.0f)
-#define PLAYER_DEFAULT_POS_Y (600.0f)
+#define PLAYER_DEFAULT_POS_Y (300.0f)
 
 //矩形判定のサイズ
-#define PLAYER_BOX_COLLISION_WIDTH (50)
-#define PLAYER_BOX_COLLISION_HEIGHT (50)
+#define PLAYER_BOX_COLLISION_WIDTH (98)
+#define PLAYER_BOX_COLLISION_HEIGHT (175)
 
 //キャラの周囲何マス
 #define PLAYER_CHECK_NUM (5)
@@ -50,6 +50,7 @@ void LoadPlayer()
 
 void StartPlayer()
 {
+
 	//生存フラグ
 	g_PlayerData.active = true;
 
@@ -58,7 +59,7 @@ void StartPlayer()
 	g_PlayerData.body.pos.y = PLAYER_DEFAULT_POS_Y;
 	
 	//アニメーション
-	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE);
+	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE, 98, 175);
 
 	//反転
 	g_PlayerData.Inversion = false;
@@ -68,7 +69,7 @@ void StartPlayer()
 	g_PlayerData.body.height = PLAYER_HEIGHT;
 
 	//接地
-	g_PlayerData.body.Ground = true;
+	g_PlayerData.body.Ground = false;
 
 	g_PlayerData.body.move.y = 0.0f;
 }
@@ -127,7 +128,9 @@ void DrawPlayer()
 
 	//int x = (int)(g_PlayerData.body.pos.x + 0.5f);
 	//int y = (int)(g_PlayerData.body.pos.y + 0.5f);
-	DrawAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x - camera.posX, g_PlayerData.body.pos.y - camera.posY, FALSE, FALSE);
+	DrawAnimation(&g_PlayerData.standby, 
+		g_PlayerData.body.pos.x + PLAYER_WIDTH / 2- camera.posX, 
+		g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2- camera.posY, FALSE, g_PlayerData.Inversion);
 }
 
 void  FinPlayer()

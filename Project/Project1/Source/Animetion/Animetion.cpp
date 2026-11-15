@@ -12,9 +12,11 @@ void InitAnimation(AnimationData* animData)
 	animData->timer = 0;
 	animData->posX = 0.0f;
 	animData->posY = 0.0f;
+	animData->drawHeight = 0;
+	animData->drawWidth = 0;
 }
 
-void StartAnimation(AnimationData* animData, float posX, float posY, int interval, int frameNum, int width, int height, bool isLoop)
+void StartAnimation(AnimationData* animData, float posX, float posY, int interval, int frameNum, int width, int height, bool isLoop,int DrawWidth,int DrawHeight)
 {
 	//アクティブ
 	animData->active = true;
@@ -41,6 +43,11 @@ void StartAnimation(AnimationData* animData, float posX, float posY, int interva
 
 	//ループ
 	animData->Loop = isLoop;
+
+	//描画サイズ
+	animData->drawWidth = DrawWidth;
+	animData->drawHeight = DrawHeight;
+
 }
 
 void UpdateAnimation(AnimationData* animData)
@@ -80,7 +87,7 @@ void UpdateAnimation(AnimationData* animData)
 
 void DrawAnimation(AnimationData* animData, bool isTurnX, bool isTurnY)
 {
-	DrawAnimation(animData, animData->posX, animData->posY);
+	DrawAnimation(animData, animData->posX, animData->posY,isTurnX,isTurnY);
 }
 
 void DrawAnimation(AnimationData* animData, float posX, float posY, bool isTurnX, bool isTurnY)
@@ -91,7 +98,13 @@ void DrawAnimation(AnimationData* animData, float posX, float posY, bool isTurnX
 	int frameX = animData->frameWidth * animData->nowFrame;
 
 	//表示するコマ
-	DrawRectGraph((int)posX, (int)posY, frameX, 0, animData->frameWidth, animData->frameHeight, animData->handle, TRUE, isTurnX, isTurnY);
+	DrawRectRotaGraph(
+		(int)posX, (int)posY,
+		frameX, 0,
+		animData->frameWidth, animData->frameHeight,
+		(double)animData->drawWidth / animData->frameWidth,
+		isTurnY ? DX_PI : 0.0,
+		animData->handle, TRUE, isTurnX);
 }
 
 
