@@ -14,6 +14,7 @@ void InitAnimation(AnimationData* animData)
 	animData->posY = 0.0f;
 	animData->drawHeight = 0;
 	animData->drawWidth = 0;
+	animData->sheetWidth = 0;
 }
 
 void StartAnimation(AnimationData* animData, float posX, float posY, int interval, int frameNum, int width, int height, bool isLoop,int DrawWidth,int DrawHeight)
@@ -40,6 +41,7 @@ void StartAnimation(AnimationData* animData, float posX, float posY, int interva
 	//サイズ
 	animData->frameHeight = height;
 	animData->frameWidth = width;
+	animData->sheetWidth = width * frameNum;
 
 	//ループ
 	animData->Loop = isLoop;
@@ -95,16 +97,29 @@ void DrawAnimation(AnimationData* animData, float posX, float posY, bool isTurnX
 	if (!animData->active)return;
 
 	//コマの切り取り位置計算
-	int frameX = animData->frameWidth * animData->nowFrame;
+	int frameX = (animData->sheetWidth * animData->nowFrame) / animData->frameNum;
+	int nextFrameX = (animData->sheetWidth * (animData->nowFrame + 1)) / animData->frameNum;
+	int frameWidth = nextFrameX - frameX;
 
 	//表示するコマ
-	DrawRectRotaGraph(
+	//DrawRectRotaGraph(
+	//	(int)posX, (int)posY,
+	//	frameX, 0,
+	//	frameWidth, animData->frameHeight,
+	//	(double)animData->drawWidth / frameWidth,
+	//	isTurnY ? DX_PI : 0.0,
+	//	animData->handle, TRUE, isTurnX);
+
+	DrawRectRotaGraph3(
 		(int)posX, (int)posY,
 		frameX, 0,
-		animData->frameWidth, animData->frameHeight,
-		(double)animData->drawWidth / animData->frameWidth,
-		isTurnY ? DX_PI : 0.0,
-		animData->handle, TRUE, isTurnX);
+		frameWidth, animData->frameHeight,
+		frameWidth / 2, animData->frameHeight / 2,
+		(double)animData->drawWidth / frameWidth,
+		(double)animData->drawHeight / animData->frameHeight,
+		0.0,
+		animData->handle, TRUE,
+		isTurnX, isTurnY);
 }
 
 

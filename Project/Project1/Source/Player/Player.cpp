@@ -50,7 +50,6 @@ void LoadPlayer()
 
 void StartPlayer()
 {
-
 	//生存フラグ
 	g_PlayerData.active = true;
 
@@ -60,6 +59,8 @@ void StartPlayer()
 	
 	//アニメーション
 	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE, 98, 175);
+	StartAnimation(&g_PlayerData.Dash, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 256, 682, TRUE, 98, 175);
+	g_PlayerData.Dash.sheetWidth = 2172;
 
 	//反転
 	g_PlayerData.Inversion = false;
@@ -116,7 +117,16 @@ void UpdatePlayer()
 	MoveWithMapCollisin(&g_PlayerData.body);
 
 	//アニメーション更新
-	UpdateAnimation(&g_PlayerData.standby);
+	if (g_PlayerData.body.move.x != 0.0f)
+	{
+		//ダッシュ
+		UpdateAnimation(&g_PlayerData.Dash);
+	}
+	else
+	{
+		//待機
+		UpdateAnimation(&g_PlayerData.standby);
+	}
 }
 
 void DrawPlayer()
@@ -126,11 +136,25 @@ void DrawPlayer()
 	//カメラ取得
 	CameraData camera = GetCamera();
 
-	//int x = (int)(g_PlayerData.body.pos.x + 0.5f);
-	//int y = (int)(g_PlayerData.body.pos.y + 0.5f);
-	DrawAnimation(&g_PlayerData.standby, 
-		g_PlayerData.body.pos.x + PLAYER_WIDTH / 2- camera.posX, 
-		g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2- camera.posY, FALSE, g_PlayerData.Inversion);
+	if (g_PlayerData.body.move.x != 0.0f)
+	{
+		//ダッシュ
+		DrawAnimation(&g_PlayerData.Dash,
+			g_PlayerData.body.pos.x + PLAYER_WIDTH / 2 - camera.posX,
+			g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2 - camera.posY,
+			FALSE, g_PlayerData.Inversion);
+
+	}
+	else
+	{
+		//待機
+		DrawAnimation(&g_PlayerData.standby,
+			g_PlayerData.body.pos.x + PLAYER_WIDTH / 2 - camera.posX,
+			g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2 - camera.posY, FALSE, g_PlayerData.Inversion);
+
+	}
+
+	
 }
 
 void  FinPlayer()

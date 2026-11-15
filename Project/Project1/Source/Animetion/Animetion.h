@@ -15,6 +15,7 @@ struct AnimationData
 	int interval;
 	int drawWidth; //描画サイズ
 	int drawHeight; //描画サイズ
+	int sheetWidth; //画像全体の横幅
 };
 
 void InitAnimation(AnimationData* animData);
