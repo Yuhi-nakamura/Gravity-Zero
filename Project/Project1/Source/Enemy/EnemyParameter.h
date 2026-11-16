@@ -1,5 +1,6 @@
 #pragma once
 #include "../Collision/CollisionParameter.h"
+#include "../Animetion/Animetion.h"
 
 enum MoveState
 {
@@ -21,5 +22,9 @@ struct EnemyData
 	bool InversionDie; //’…’nŒã€–S”»’è
 	int stopTimer; //‚Ô‚Â‚©‚Á‚½Œã‚Ì’â~ŠÔ
 	MoveState movestate; //s“®ó‘Ô
+
+	AnimationData Enemysutandby; //‘Ò‹@
+	AnimationData Enemymove; //ˆÚ“®
+	AnimationData Enemydie;  //€–S
 };
 

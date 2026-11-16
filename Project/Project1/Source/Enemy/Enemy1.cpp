@@ -8,7 +8,7 @@
 #include "../Player/Player.h"
 #include "../Animetion/Animetion.h"
 
-//エネミー1関連設定
+//エネミー1関連設定(後で変更)
 #define ENEMY_WIDTH (30.0f)
 #define ENEMY_HEIGHT (30.0f)
 #define ENEMY_RADIUS (20.0f)
@@ -20,7 +20,7 @@
 
 //デフォルト位置
 #define ENEMY_DEFAULT_POS_X (300)
-#define ENEMY_DEFAULT_POS_Y (600)
+#define ENEMY_DEFAULT_POS_Y (100)
 
 
 EnemyData g_EnemyData = { 0 };
@@ -39,11 +39,41 @@ void InitEnemy1()
 	g_EnemyData.InversionDie = false;
 	g_EnemyData.stopTimer = 0;
 	g_EnemyData.movestate = MOVE;
+	InitAnimation(&g_EnemyData.Enemysutandby);
+	InitAnimation(&g_EnemyData.Enemymove);
+	InitAnimation(&g_EnemyData.Enemydie);
 }
 
 void LoadEnemy1()
 {
-	g_EnemyData.handle = LoadGraph("Data/Enemy/Enemy1.png");
+	g_EnemyData.Enemysutandby.handle = LoadGraph("Data/Enemy/Enemy1.png");
+	g_EnemyData.Enemymove.handle = LoadGraph("Data/Enemy/Enemy1_Dash.png");
+	g_EnemyData.Enemydie.handle = LoadGraph("Data/Enemy/Enemy1_Die.png");
+}
+
+void StartEnemy1()
+{
+	//生存フラグ
+	g_EnemyData.active = true;
+	
+	//初期位置
+	g_EnemyData.body.pos.x = ENEMY_DEFAULT_POS_X;
+	g_EnemyData.body.pos.y = ENEMY_DEFAULT_POS_Y;
+
+	//アニメーション(大きさはあとで変更)
+	StartAnimation(&g_EnemyData.Enemysutandby, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
+	StartAnimation(&g_EnemyData.Enemymove, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
+	StartAnimation(&g_EnemyData.Enemydie, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
+
+	//反転
+	g_EnemyData.Inversion = false;
+
+	//サイズ
+	g_EnemyData.body.width = ENEMY_WIDTH;
+	g_EnemyData.body.height = ENEMY_HEIGHT;
+
+	//接地
+	g_EnemyData.body.Ground = false;
 }
 
 void StepEnemy1()
@@ -93,6 +123,16 @@ void UpdateEnemy1()
 			g_EnemyData.stopTimer = 0;
 		}
 	}
+
+	if (g_EnemyData.body.move.x != 0.0f)
+	{
+		UpdateAnimation(&g_EnemyData.Enemymove);
+	}
+	else
+	{
+		UpdateAnimation(&g_EnemyData.Enemysutandby);
+	}
+	
 	
 	PlayerData* player = GetPlayer();
 	if (player->Inversion == true)
@@ -105,11 +145,21 @@ void UpdateEnemy1()
 			g_EnemyData.InversionDie = true;
 		}
 	}
+
+	if (g_EnemyData.InversionDie = true)
+	{
+		UpdateAnimation(&g_EnemyData.Enemydie);
+	}
 }
 
 void DrawEnemy1()
 {
-	g_EnemyData.handle = LoadGraph("Data/Enemy/Enemy1.png");
+	if (!g_EnemyData.active)return;
+
+	if (g_EnemyData.body.move.x != 0.0f)
+	{
+		DrawAnimation(&g_EnemyData.Enemysutandby,)
+	}
 }
 
 void FinEnemy1()
@@ -121,4 +171,5 @@ void FinEnemy1()
 void InitEnemy1Animation()
 {
 	//待機
+	
 }

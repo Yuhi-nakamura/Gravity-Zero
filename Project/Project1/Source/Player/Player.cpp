@@ -167,3 +167,14 @@ PlayerData* GetPlayer()
 	return &g_PlayerData;
 }
 
+void ReSpwnPlayer()
+{
+	if (!g_PlayerData.active)
+	{
+		//無敵時間
+
+		//キャラクター点滅
+
+		//
+	}
+}

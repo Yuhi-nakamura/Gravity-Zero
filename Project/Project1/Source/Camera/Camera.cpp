@@ -10,7 +10,8 @@ CameraData g_CameraData = { 0 };
 
 void InitCamera()
 {
-
+	g_CameraData.posX = 0.0f;
+	g_CameraData.posY = 0.0f;
 }
 
 void StepCamera()
