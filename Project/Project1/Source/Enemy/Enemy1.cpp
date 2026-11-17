@@ -7,6 +7,8 @@
 #include "../Gravity/Gravity.h"
 #include "../Player/Player.h"
 #include "../Animetion/Animetion.h"
+#include "Enemy1.h"
+#include "../Sound/Sound.h"
 
 //エネミー1関連設定(後で変更)
 #define ENEMY_WIDTH (30.0f)
@@ -154,11 +156,24 @@ void UpdateEnemy1()
 
 void DrawEnemy1()
 {
-	if (!g_EnemyData.active)return;
+	if (!g_EnemyData.active)
+	{
+		DrawAnimation(&g_EnemyData.Enemydie,
+			g_EnemyData.body.pos.x + ENEMY_WIDTH / 2, g_EnemyData.body.pos.y + ENEMY_HEIGHT / 2,
+			FALSE, g_EnemyData.Inversion);
+	}
 
 	if (g_EnemyData.body.move.x != 0.0f)
 	{
-		DrawAnimation(&g_EnemyData.Enemysutandby,)
+		DrawAnimation(&g_EnemyData.Enemymove,
+			g_EnemyData.body.pos.x + ENEMY_WIDTH / 2, g_EnemyData.body.pos.y + ENEMY_HEIGHT / 2,
+			FALSE, g_EnemyData.Inversion);
+	}
+	else
+	{
+		DrawAnimation(&g_EnemyData.Enemysutandby,
+			g_EnemyData.body.pos.x + ENEMY_WIDTH / 2, g_EnemyData.body.pos.y + ENEMY_HEIGHT / 2,
+			FALSE, g_EnemyData.Inversion);
 	}
 }
 
@@ -167,9 +182,13 @@ void FinEnemy1()
 	DeleteGraph(g_EnemyData.handle);
 }
 
-//歩く、落ちる、死ぬアニメーション追加
-void InitEnemy1Animation()
+void EnemyDead()
 {
-	//待機
-	
+	g_EnemyData.active = false;
+}
+
+void PlayerHitEnemy()
+{
+	EnemyDead();
+	//PlaySE();
 }

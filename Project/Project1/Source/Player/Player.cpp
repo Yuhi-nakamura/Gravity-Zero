@@ -17,6 +17,12 @@
 #define PLAYER_DEFAULT_POS_X (100.0f)
 #define PLAYER_DEFAULT_POS_Y (300.0f)
 
+//無敵時間
+#define PLAYER_INVISIBLE_TIME (3)
+
+//リスポーン待ち
+#define PLAYER_RESPAWN_WAIT (1) 
+
 //矩形判定のサイズ
 #define PLAYER_BOX_COLLISION_WIDTH (98)
 #define PLAYER_BOX_COLLISION_HEIGHT (175)
@@ -39,6 +45,9 @@ void InitPlayer()
 	InitAnimation(&g_PlayerData.Dash);
 	InitAnimation(&g_PlayerData.InversionAnime);
 	InitAnimation(&g_PlayerData.standby);
+	g_PlayerData.invincibletimer = 0;
+	g_PlayerData.invincible = false;
+	g_PlayerData.respawnTimer = 0;
 }
 
 void LoadPlayer()
@@ -73,6 +82,13 @@ void StartPlayer()
 	g_PlayerData.body.Ground = false;
 
 	g_PlayerData.body.move.y = 0.0f;
+
+	//死亡後無敵時間
+	g_PlayerData.invincibletimer = 0;
+
+	g_PlayerData.invincible = false;
+
+	g_PlayerData.respawnTimer = 0;
 }
 
 void StepPlayer()
@@ -87,17 +103,79 @@ void StepPlayer()
 	g_PlayerData.body.move.x = 0.0f;
 
 	//左入力
-	if (IsInputKey(KEY_Q) || IsInputKey(KEY_A) || IsInputKey(KEY_Z) || Pad::IsPress(PAD_INPUT_LEFT) || Pad::GetStickX() < -200)
+	if (IsInputKey(KEY_Q))
 	{
 		g_PlayerData.body.move.x = -PLAYER_SPEED;
 	}
+	if (IsInputKey(KEY_A))
+	{
+		g_PlayerData.body.move.x = -PLAYER_SPEED;
+	}
+	if (IsInputKey(KEY_Z))
+	{
+		g_PlayerData.body.move.x = -PLAYER_SPEED;
+	}
+	if (Pad::IsPress(PAD_INPUT_LEFT))
+	{
+		g_PlayerData.body.move.x = -PLAYER_SPEED;
+	}
+	if (Pad::GetStickX() < -200)
+	{
+		g_PlayerData.body.move.x = -PLAYER_SPEED;
+	}
+
 	//右入力
-	if (IsInputKey(KEY_E) || IsInputKey(KEY_D) || IsInputKey(KEY_C) || Pad::IsPress(PAD_INPUT_RIGHT) || Pad::GetStickX() > 200)
+	if (IsInputKey(KEY_E))
 	{
 		g_PlayerData.body.move.x += PLAYER_SPEED;
 	}
+	if (IsInputKey(KEY_D))
+	{
+		g_PlayerData.body.move.x += PLAYER_SPEED;
+	}
+	if (IsInputKey(KEY_C))
+	{
+		g_PlayerData.body.move.x += PLAYER_SPEED;
+	}
+	if (Pad::IsPress(PAD_INPUT_RIGHT))
+	{
+		g_PlayerData.body.move.x += PLAYER_SPEED;
+	}
+	if (Pad::GetStickX() > 200)
+	{
+		g_PlayerData.body.move.x += PLAYER_SPEED;
+	}
+
 	//重力反転
-	if (IsTriggerKey(KEY_SPACE) || Pad::IsTrigger(PAD_INPUT_A) || Pad::IsTrigger(PAD_INPUT_B) || Pad::IsTrigger(PAD_INPUT_X) || Pad::IsTrigger(PAD_INPUT_Y))
+	if (IsTriggerKey(KEY_SPACE))
+	{
+		if (g_PlayerData.body.Ground == true)
+		{
+			ReverseGravity();
+		}
+	}
+	if (Pad::IsTrigger(PAD_INPUT_A))
+	{
+		if (g_PlayerData.body.Ground == true)
+		{
+			ReverseGravity();
+		}
+	}
+	if (Pad::IsTrigger(PAD_INPUT_B))
+	{
+		if (g_PlayerData.body.Ground == true)
+		{
+			ReverseGravity();
+		}
+	}
+	if (Pad::IsTrigger(PAD_INPUT_X))
+	{
+		if (g_PlayerData.body.Ground == true)
+		{
+			ReverseGravity();
+		}
+	}
+	if (Pad::IsTrigger(PAD_INPUT_Y))
 	{
 		if (g_PlayerData.body.Ground == true)
 		{
@@ -106,6 +184,12 @@ void StepPlayer()
 	}
 	//毎フレーム重力適応
 	StepGravity();
+
+	//無敵時間
+	if (g_PlayerData.invincible)
+	{
+		g_PlayerData.invincibletimer--;
+	}
 }
 
 void UpdatePlayer()
@@ -167,14 +251,44 @@ PlayerData* GetPlayer()
 	return &g_PlayerData;
 }
 
-void ReSpwnPlayer()
+bool ReSpawnPlayer()
 {
 	if (!g_PlayerData.active)
 	{
-		//無敵時間
+		g_PlayerData.active = true;
 
-		//キャラクター点滅
+		//無敵状態
+		g_PlayerData.invincible = true;
+		g_PlayerData.invincibletimer = PLAYER_INVISIBLE_TIME;
 
-		//
+		//配置（あとでセーブしたとこに変更）
+		g_PlayerData.body.pos.x = PLAYER_DEFAULT_POS_X;
+		g_PlayerData.body.pos.y = PLAYER_DEFAULT_POS_Y;
+
+		//リスポーン
+		return true;
 	}
+	//不可
+	return false;
+}
+
+void PlayerDead()
+{
+	g_PlayerData.active = false;
+
+	//リスポーン待ち
+	g_PlayerData.respawnTimer = PLAYER_RESPAWN_WAIT;
+}
+
+//敵と衝突
+void PlayerHitEnemy()
+{
+	//衝突したら死亡
+	PlayerDead();
+}
+
+//棘に衝突
+void PlayerHitThorn()
+{
+	PlayerDead();
 }

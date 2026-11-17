@@ -20,6 +20,9 @@ struct PlayerData
 	AnimationData standby; //待機
 	AnimationData Dash; // ダッシュ
 	AnimationData InversionAnime; //反転中
+	int invincibletimer; //死亡後無敵時間
+	bool invincible; //死亡後無敵
+	int respawnTimer; //リスポーン待ち
 };
 
 //関数のプロトタイプ宣言
@@ -34,5 +37,8 @@ void FinPlayer();
 //取得関数
 PlayerData* GetPlayer();
 
-//アニメーション関連
-void InitPlayerAnimasion();
+//リスポーン
+bool ReSpawnPlayer();
+
+//死亡
+void PlayerDead();

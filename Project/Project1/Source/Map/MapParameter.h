@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+#include "../Collision/CollisionParameter.h"
 
 #define BLOCK_MAX 2048
 #define MAP_CHIP_X_NUM (32)
@@ -22,6 +23,7 @@ struct BlockData
 	VECTOR pos;
 	float width;
 	float height;
+	Body body; //“–‚½‚è”»’èƒ{ƒfƒB
 };
 
 struct MapChipData

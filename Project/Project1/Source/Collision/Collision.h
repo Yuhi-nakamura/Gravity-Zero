@@ -1,4 +1,5 @@
 #pragma once
+#include "CollisionParameter.h"
 
 // ‹éŒ`‚Æ“_‚Ì“–‚½‚è”»’è
 bool CheckSquarePoint(float squarePosX, float squarePosY, float squareWidth, float squareHeight, float pointX, float pointY);
@@ -12,3 +13,5 @@ bool CheckCirclePoint(float circlePosX, float circlePosY, float circleRadius, fl
 // ‰~‚Æ‰~‚Ì“–‚½‚è”»’è
 bool CheckCircleCircle(float circleA_PosX, float circleA_PosY, float circleA_Radius, float circleB_PosX, float circleB_PosY, float circleB_Radius);
 
+//body\‘¢‘Ì“–‚½‚è”»’è
+bool CheckSquareSquarebody(const Body* bodyA, const Body* bodyB);
