@@ -281,9 +281,8 @@ void PlayerDead()
 }
 
 //“G‚ÆÕ“Ë
-void PlayerHitEnemy()
+void EnemyHit()
 {
-	//Õ“Ë‚µ‚½‚ç€–S
 	PlayerDead();
 }
 

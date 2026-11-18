@@ -49,7 +49,7 @@ void InitEnemy1()
 void LoadEnemy1()
 {
 	g_EnemyData.Enemysutandby.handle = LoadGraph("Data/Enemy/Enemy1.png");
-	g_EnemyData.Enemymove.handle = LoadGraph("Data/Enemy/Enemy1_Dash.png");
+	g_EnemyData.Enemymove.handle = LoadGraph("Data/Enemy/Enemy1_move.png");
 	g_EnemyData.Enemydie.handle = LoadGraph("Data/Enemy/Enemy1_Die.png");
 }
 
@@ -63,9 +63,9 @@ void StartEnemy1()
 	g_EnemyData.body.pos.y = ENEMY_DEFAULT_POS_Y;
 
 	//アニメーション(大きさはあとで変更)
-	StartAnimation(&g_EnemyData.Enemysutandby, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
-	StartAnimation(&g_EnemyData.Enemymove, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
-	StartAnimation(&g_EnemyData.Enemydie, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 0, 0, TRUE, 98, 175);
+	StartAnimation(&g_EnemyData.Enemysutandby, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 468, 408, TRUE, 98, 175);
+	StartAnimation(&g_EnemyData.Enemymove, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 2, 1774, 887, TRUE, 98, 175);
+	StartAnimation(&g_EnemyData.Enemydie, g_EnemyData.body.pos.x, g_EnemyData.body.pos.y, 1, 1, 434, 116, TRUE, 98, 175);
 
 	//反転
 	g_EnemyData.Inversion = false;
