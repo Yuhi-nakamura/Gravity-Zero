@@ -126,6 +126,9 @@
     <ClCompile Include="Source\UI\Text.cpp">
       <Filter>Source\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy\Enemy2.cpp">
+      <Filter>Source\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameSetting\GameSetting.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Source\UI\Text.h">
       <Filter>Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy\Enemy2.h">
+      <Filter>Source\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
