@@ -158,7 +158,7 @@ void DrawEnemy1()
 
 	if (g_EnemyData.body.move.x != 0.0f)
 	{
-		DrawAnimation(&g_EnemyData.Enemysutandby,)
+		//DrawAnimation(&g_EnemyData.Enemysutandby,)
 	}
 }
 
