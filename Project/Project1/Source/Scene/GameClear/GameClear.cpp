@@ -47,7 +47,23 @@ void StepGameClear()
 	StepBackGround();
 
 	//ƒ^ƒCƒgƒ‹‚É–ß‚é
-	if (IsTriggerKey(KEY_SPACE) || Pad::IsTrigger)
+	if (IsTriggerKey(KEY_SPACE))
+	{
+		ChangeScene(SCENE_TITLE);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_A))
+	{
+		ChangeScene(SCENE_TITLE);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_B))
+	{
+		ChangeScene(SCENE_TITLE);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_X))
+	{
+		ChangeScene(SCENE_TITLE);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_Y))
 	{
 		ChangeScene(SCENE_TITLE);
 	}

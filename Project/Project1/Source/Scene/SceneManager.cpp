@@ -75,7 +75,7 @@ void InitScene()
 	 	InitPlay();
 		break;
 	case SCENE_GAME_CLEAR: //ÉQÅ[ÉÄÉNÉäÉA
-		//InitGameClear();
+		InitGameClear();
 		break;
 	}
 }
@@ -92,7 +92,7 @@ void LoadScene()
 		LoadPlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//LoadGameClear();
+		LoadGameClear();
 		break;
 	}
 }
@@ -108,7 +108,7 @@ void StartScene()
 		StartPlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//StartGameClear();
+		StartGameClear();
 		break;
 	}
 }
@@ -124,7 +124,7 @@ void StepScene()
 		StepPlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//StepGameClear();
+		StepGameClear();
 		break;
 	}
 }
@@ -140,7 +140,7 @@ void UpdateScene()
 		UpdatePlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//UpdateGameClear();
+		UpdateGameClear();
 		break;
 	}
 }
@@ -156,7 +156,7 @@ void DrawScene()
 		DrawPlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//DrawGameClear();
+		DrawGameClear();
 		break;
 	}
 }
@@ -172,7 +172,7 @@ void FinScene()
 		FinPlay();
 		break;
 	case SCENE_GAME_CLEAR:
-		//FinGameClear();
+		FinGameClear();
 		break;
 	}
 }

@@ -74,7 +74,23 @@ void StepTitle()
 	}
 
 	//ボタンが押されたらプレイシーン
-	if (IsTriggerKey(KEY_SPACE) || Pad::IsTrigger)
+	if (IsTriggerKey(KEY_SPACE))
+	{
+		ChangeScene(SCENE_PLAY);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_A))
+	{
+		ChangeScene(SCENE_PLAY);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_B))
+	{
+		ChangeScene(SCENE_PLAY);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_X))
+	{
+		ChangeScene(SCENE_PLAY);
+	}
+	if (Pad::IsTrigger(PAD_INPUT_Y))
 	{
 		ChangeScene(SCENE_PLAY);
 	}

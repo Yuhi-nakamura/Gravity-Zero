@@ -4,6 +4,7 @@
 #include "../Map/Block.h"
 #include "../Map/MapManager.h"
 #include <math.h>
+#include "CollisionParameter.h"
 
 //矩形と点の当たり判定
 bool CheckSquarePoint(float squarePosX, float squarePosY, float squareWidth, float squareHeight, float pointX, float pointY)
@@ -69,6 +70,35 @@ bool CheckCircleCircle(float circleA_PosX, float circleA_PosY, float circleA_Rad
     if (distance <= (circleA_Radius + circleB_Radius))
     {
         return true;
+    }
+
+    return false;
+}
+
+//Body構造体同士の当たり判定
+bool CheckSquareSquarebody(const Body* bodyA, const Body* bodyB)
+{
+    //矩形A
+    float leftA = bodyA->pos.x;
+    float rightA = bodyA->pos.x + bodyA->width;
+    float topA = bodyA->pos.y;
+    float bottomA = bodyA->pos.y + bodyA->height;
+
+    //矩形B
+    float leftB = bodyB->pos.x;
+    float rightB = bodyB->pos.x + bodyB->width;
+    float topB = bodyB->pos.y;
+    float bottomB = bodyB->pos.y + bodyB->height;
+
+    // 左右の辺がめり込んでいるかチェック
+    if (rightA > leftB && leftA < rightB)
+    {
+        // 上下の片がめり込んでいるかチェック
+        if (bottomA > topB && topA < bottomB)
+        {
+            // 当たっている
+            return true;
+        }
     }
 
     return false;

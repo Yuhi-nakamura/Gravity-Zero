@@ -11,3 +11,4 @@ void FinEnemy();
 
 //”z’u
 void EnemySpawn();
+
