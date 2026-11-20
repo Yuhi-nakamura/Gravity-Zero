@@ -130,7 +130,7 @@ void UpdateEnemy1()
 	{
 		UpdateAnimation(&g_EnemyData.Enemymove);
 	}
-	else
+	if(g_EnemyData.body.move.x = 0.0f)
 	{
 		UpdateAnimation(&g_EnemyData.Enemysutandby);
 	}
@@ -170,7 +170,7 @@ void DrawEnemy1()
 			g_EnemyData.body.pos.x + ENEMY_WIDTH / 2, g_EnemyData.body.pos.y + ENEMY_HEIGHT / 2,
 			FALSE, g_EnemyData.Inversion);
 	}
-	else
+	if(g_EnemyData.body.move.x == 0.0f)
 	{
 		DrawAnimation(&g_EnemyData.Enemysutandby,
 			g_EnemyData.body.pos.x + ENEMY_WIDTH / 2, g_EnemyData.body.pos.y + ENEMY_HEIGHT / 2,
