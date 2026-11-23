@@ -22,7 +22,7 @@ namespace Pad
 		lastPad = nowPad;
 
 		//現在のパッド情報
-		nowPad = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+		nowPad = GetJoypadInputState(DX_INPUT_PAD1);
 
 		//左スティックの入力情報
 		GetJoypadAnalogInput(&stickX, &stickY, DX_INPUT_PAD1);

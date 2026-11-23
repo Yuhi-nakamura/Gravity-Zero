@@ -4,6 +4,7 @@
 #include "../../Player/Player.h"
 #include "../../Collision/Collision.h"
 #include "../../Enemy/EnemyManager.h"
+#include "../../Camera/Camera.h"
 
 //背景スピード
 #define BACK_GROUND_SPEED (4.0f)
@@ -24,6 +25,8 @@ void LoadPlay()
 {
 	LoadPlayer();
 
+	LoadEnemy();
+
 	LoadMap();
 }
 
@@ -31,22 +34,33 @@ void StartPlay()
 {
 	StartPlayer();
 
+	StartEnemy();
+
 	StartMap();
 }
 
 void StepPlay()
 {
 	StepPlayer();
+
+	StepEnemy();
 }
 
 void UpdatePlay()
 {
 	UpdatePlayer();
+
+	UpdateEnemy();
+
+	//カメラ
+	StepCamera();
 }
 
 void DrawPlay()
 {
 	DrawMap();
+
+	DrawEnemy();
 
 	DrawPlayer();
 }
@@ -54,6 +68,8 @@ void DrawPlay()
 void FinPlay()
 {
 	FinPlayer();
+
+	FinEnemy();
 
 	FinMap();
 }

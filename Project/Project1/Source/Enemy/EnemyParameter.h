@@ -26,5 +26,7 @@ struct EnemyData
 	AnimationData Enemysutandby; //‘Ò‹@
 	AnimationData Enemymove; //ˆÚ“®
 	AnimationData Enemydie;  //€–S
+
+	int dieTimer; //€–SŒã‰æ‘œ‚ªÁ‚¦‚é‚Ü‚Å‚ÌŠÔ
 };
 

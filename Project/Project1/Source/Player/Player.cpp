@@ -48,6 +48,7 @@ void InitPlayer()
 	g_PlayerData.invincibletimer = 0;
 	g_PlayerData.invincible = false;
 	g_PlayerData.respawnTimer = 0;
+	g_PlayerData.TurnX = false;
 }
 
 void LoadPlayer()
@@ -55,6 +56,7 @@ void LoadPlayer()
 	g_PlayerData.standby.handle = LoadGraph("Data/Player/Player.png");
 	g_PlayerData.Dash.handle = LoadGraph("Data/Player/Player_Dash.png");
 	g_PlayerData.InversionAnime.handle = LoadGraph("Data/Player/Player_Inversion.png");
+
 }
 
 void StartPlayer()
@@ -68,8 +70,8 @@ void StartPlayer()
 	
 	//アニメーション
 	StartAnimation(&g_PlayerData.standby, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 1, 130, 233, TRUE, 98, 175);
-	StartAnimation(&g_PlayerData.Dash, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 1, 8, 256, 682, TRUE, 98, 175);
-	g_PlayerData.Dash.sheetWidth = 2172;
+	StartAnimation(&g_PlayerData.Dash, g_PlayerData.body.pos.x, g_PlayerData.body.pos.y, 4, 4, 256, 377, TRUE, 98, 175);
+	//g_PlayerData.Dash.sheetWidth = 1024;
 
 	//反転
 	g_PlayerData.Inversion = false;
@@ -144,6 +146,16 @@ void StepPlayer()
 	if (Pad::GetStickX() > 200)
 	{
 		g_PlayerData.body.move.x += PLAYER_SPEED;
+	}
+
+	//左右反転
+	if (g_PlayerData.body.move.x < 0.0f)
+	{
+		g_PlayerData.TurnX = TRUE;
+	}
+	else if (g_PlayerData.body.move.x > 0.0f)
+	{
+		g_PlayerData.TurnX = FALSE;
 	}
 
 	//重力反転
@@ -226,7 +238,7 @@ void DrawPlayer()
 		DrawAnimation(&g_PlayerData.Dash,
 			g_PlayerData.body.pos.x + PLAYER_WIDTH / 2 - camera.posX,
 			g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2 - camera.posY,
-			FALSE, g_PlayerData.Inversion);
+			g_PlayerData.TurnX, g_PlayerData.Inversion);
 
 	}
 	else
@@ -234,7 +246,7 @@ void DrawPlayer()
 		//待機
 		DrawAnimation(&g_PlayerData.standby,
 			g_PlayerData.body.pos.x + PLAYER_WIDTH / 2 - camera.posX,
-			g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2 - camera.posY, FALSE, g_PlayerData.Inversion);
+			g_PlayerData.body.pos.y + PLAYER_HEIGHT / 2 - camera.posY, g_PlayerData.TurnX, g_PlayerData.Inversion);
 
 	}
 

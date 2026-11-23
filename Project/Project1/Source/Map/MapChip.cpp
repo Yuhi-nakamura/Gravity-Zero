@@ -40,6 +40,11 @@ void CreateMap()
 		for (int j = 0; j < MAP_CHIP_X_NUM; j++)
 		{
 			MapChipType type = (MapChipType)g_MapChip[i][j].mapChip;
+			if (type == BLOCK_TYPE_NONE)
+			{
+				g_MapChip[i][j].data = nullptr;
+				continue;
+			}
 
 			VECTOR pos = VGet(j * MAP_CHIP_WIDTH, i * MAP_CHIP_HEIGHT, 0.0f);
 

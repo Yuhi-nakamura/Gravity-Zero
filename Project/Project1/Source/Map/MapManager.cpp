@@ -48,6 +48,7 @@ void MoveWithMapCollisin(Body* body)
 
 			//ブロック取得、当たり判定
 			BlockData* block = mapChipData.data;
+			if (block == nullptr)continue;
 
 			//当たり判定
 			if (CheckSquareSquare(body->pos.x, body->pos.y, body->width, body->height, block->pos.x, block->pos.y, block->width, block->height))

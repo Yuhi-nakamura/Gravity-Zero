@@ -4,3 +4,6 @@
 void InitGravity();
 void StepGravity();
 void ReverseGravity();//”½“]
+
+//Enemy—p
+void StepEnemyGravity();

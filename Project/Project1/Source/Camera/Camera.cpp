@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "../Input/Input.h"
 #include "../Player/Player.h"
+#include "../GameSetting/GameSetting.h"
 
 #define DEBUG_CAMERA_SPEED (5.0f)
 #define CAMERA_SCROLL_START_X (200.0f)
@@ -18,11 +19,12 @@ void StepCamera()
 {
 	//プレイヤー取得
 	PlayerData* player = GetPlayer();
-	//左右
-	g_CameraData.posX = player->body.pos.x - 100.0f;
+	//画面中央にPlayerを表示
+	g_CameraData.posX = player->body.pos.x
+		+ player->body.width / 2 - SCREEN_WIDTH / 2;
 
-	//上下
-	g_CameraData.posY = player->body.pos.y- 600.0f;
+	g_CameraData.posY = player->body.pos.y
+		+ player->body.height / 2 - SCREEN_HEIGHT / 2;
 
 }
 

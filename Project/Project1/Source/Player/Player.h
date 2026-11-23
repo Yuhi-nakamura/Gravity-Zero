@@ -23,6 +23,8 @@ struct PlayerData
 	int invincibletimer; //死亡後無敵時間
 	bool invincible; //死亡後無敵
 	int respawnTimer; //リスポーン待ち
+
+	bool TurnX; //左右反転
 };
 
 //関数のプロトタイプ宣言
@@ -42,3 +44,6 @@ bool ReSpawnPlayer();
 
 //死亡
 void PlayerDead();
+
+//Enemyと接触
+void EnemyHit();
