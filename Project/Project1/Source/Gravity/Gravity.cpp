@@ -4,7 +4,7 @@
 #include "../Enemy/Enemy1.h"
 
 #define GRAVITY_POWER (0.4f) //1フレームごとに加算する重力加速度
-#define FALL_SPEED (8.0f) //落下速度上限
+#define FALL_SPEED (10.0f) //落下速度上限
 
 extern EnemyData g_EnemyData;
 

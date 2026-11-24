@@ -58,7 +58,7 @@ void FinBlock()
 
 BlockData* CreateBlock(MapChipType type, VECTOR pos)
 {
-	//未使用ブロックえお探す
+	//未使用ブロックを探す
 	BlockData* block = g_Block;
 	for (int i = 0; i < BLOCK_MAX; i++, block++)
 	{

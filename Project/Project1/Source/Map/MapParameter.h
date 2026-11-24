@@ -12,6 +12,8 @@ enum MapChipType
 {
 	BLOCK_TYPE_NONE,
 	NORMAL_BLOCK,
+	MOVE_BLOCK,
+	THORN_BLOCK,
 	BLOCK_TYPE_MAX,
 };
 
@@ -30,4 +32,5 @@ struct MapChipData
 {
 	int mapChip;
 	BlockData* data;
+	//bool isCollision;
 };

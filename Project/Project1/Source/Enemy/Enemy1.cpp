@@ -22,7 +22,7 @@
 #define ENEMY_COLLISION_HEIGHT (175)
 
 //デフォルト位置
-#define ENEMY_DEFAULT_POS_X (300)
+#define ENEMY_DEFAULT_POS_X (450)
 #define ENEMY_DEFAULT_POS_Y (300)
 
 

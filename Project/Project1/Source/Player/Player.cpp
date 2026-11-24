@@ -21,7 +21,7 @@
 #define PLAYER_INVISIBLE_TIME (3)
 
 //リスポーン待ち
-#define PLAYER_RESPAWN_WAIT (1) 
+#define PLAYER_RESPAWN_WAIT (2) 
 
 //矩形判定のサイズ
 #define PLAYER_BOX_COLLISION_WIDTH (98)
@@ -296,6 +296,7 @@ void PlayerDead()
 void EnemyHit()
 {
 	PlayerDead();
+	ReSpawnPlayer();
 }
 
 //棘に衝突

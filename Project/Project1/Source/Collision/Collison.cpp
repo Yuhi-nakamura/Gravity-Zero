@@ -103,3 +103,13 @@ bool CheckSquareSquarebody(const Body* bodyA, const Body* bodyB)
 
     return false;
 }
+
+//•‰‰×ŒyŒ¸XŽ²Õ“Ë
+//void ResolveCollisionX(Body* self, const Body* other)
+//{
+//    //¶‚©‚ç
+//    if ((self->pos.x + self->width) <= other->pos.x + COLLISION_EPS)
+//    {
+//
+//    }
+//}
