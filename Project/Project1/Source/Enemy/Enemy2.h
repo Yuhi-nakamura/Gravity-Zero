@@ -8,3 +8,6 @@ void StepEnemy2();
 void UpdateEnemy2();
 void DrawEnemy2();
 void FinEnemy2();
+
+//Ž€–S
+void Enemy2Dead();

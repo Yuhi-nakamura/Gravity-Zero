@@ -12,8 +12,8 @@ enum MapChipType
 {
 	BLOCK_TYPE_NONE,
 	NORMAL_BLOCK,
-	MOVE_BLOCK,
-	THORN_BLOCK,
+	MOVE_BLOCK, //ìÆÇ≠è∞
+	THORN_BLOCK, //ûô
 	BLOCK_TYPE_MAX,
 };
 

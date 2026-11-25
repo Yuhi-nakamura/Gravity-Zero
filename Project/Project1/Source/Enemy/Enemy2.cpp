@@ -176,3 +176,14 @@ void FinEnemy2()
 	DeleteGraph(g_Enemy2Data.handle);
 }
 
+//Ž€–S
+void Enemy2Dead()
+{
+	g_Enemy2Data.active = false;
+}
+
+void PlayerHitEnemy()
+{
+	Enemy2Dead();
+	//PlaySE();
+}
