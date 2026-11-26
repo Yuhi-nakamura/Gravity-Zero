@@ -119,3 +119,36 @@ void MoveWithMapCollisin(Body* body)
 	}
 }
 
+//負荷軽減X軸衝突
+void ResolveMapCollisionX(Body* self, int range)
+{
+	//座標を添え字に変換
+	int x = (int)((self->pos.x + self->width / 2) / MAP_CHIP_WIDTH);
+	int y = (int)((self->pos.y + self->height / 2) / MAP_CHIP_HEIGHT);
+
+	//Playerの左上にあるマップチップインデックス
+	int left = x - range;
+	int top = y - range;
+
+	//Player右下マップチップインデックス
+	int right = x + range;
+	int bottom = y + range;
+
+	//X軸だけ移動
+	self->pos.x += self->move.x;
+
+	//左上からチェック
+	for (int y = top; y <= bottom; y++)
+	{
+		//マップチップからはみ出したら処理しない
+		if (y < 0 || y >= MAP_CHIP_Y_NUM)continue;
+
+		for (int x = left; x <= right; x++)
+		{
+			//マップチップからはみ出したら処理しない
+			if (x < 0 || x >= MAP_CHIP_X_NUM)continue;
+		}
+	}
+	//ここからまだ
+
+}

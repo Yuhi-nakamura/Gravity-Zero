@@ -8,4 +8,5 @@ struct Body
 	float width;
 	float height;
 	bool Ground;
+	int moveBlock; //ìÆÇ≠è∞
 };

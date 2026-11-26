@@ -49,6 +49,7 @@ void InitPlayer()
 	g_PlayerData.invincible = false;
 	g_PlayerData.respawnTimer = 0;
 	g_PlayerData.TurnX = false;
+	g_PlayerData.body.moveBlock = -1;
 }
 
 void LoadPlayer()
@@ -91,6 +92,9 @@ void StartPlayer()
 	g_PlayerData.invincible = false;
 
 	g_PlayerData.respawnTimer = 0;
+
+	//動く床
+	g_PlayerData.body.moveBlock = -1;
 }
 
 void StepPlayer()
@@ -166,6 +170,8 @@ void StepPlayer()
 			ReverseGravity();
 		}
 	}
+
+	//ゲームパッド入力
 	if (Pad::IsTrigger(PAD_INPUT_A))
 	{
 		if (g_PlayerData.body.Ground == true)
@@ -201,6 +207,12 @@ void StepPlayer()
 	if (g_PlayerData.invincible)
 	{
 		g_PlayerData.invincibletimer--;
+	}
+
+	//動く床
+	if (g_PlayerData.body.moveBlock != NULL)
+	{
+		
 	}
 }
 

@@ -25,6 +25,7 @@ struct PlayerData
 	int respawnTimer; //リスポーン待ち
 
 	bool TurnX; //左右反転
+	bool moveblock; //動く床判定
 };
 
 //関数のプロトタイプ宣言
